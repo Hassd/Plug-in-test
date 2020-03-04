@@ -21,3 +21,8 @@ qrcode.js 这个是把想要转换的内容变成二维码进行显示出来
 
 [qrcode 官网网址](http://davidshimjs.github.io/qrcodejs/)  
 [qrcode 中文文档](http://code.ciaoca.com/javascript/qrcode/)  
+
+### jspdf.html
+jspdf.js 可以把html页面用PDF格式显示或者可以保存成.pdf 文件
+
+[jspdf GitHub 网址](https://github.com/MrRio/jsPDF)  
