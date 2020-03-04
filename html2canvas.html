@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/html2canvas.min.js"></script>
+    <style>
+        #div {
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+            background-color: red;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        图片区域
+    </div>
+    <button id="btn1">截图显示</button>
+    <button id="btn2">截图下载</button>
+    <script>
+        let div = document.getElementById('div');
+        let btn1 = document.getElementById('btn1');
+        let btn2 = document.getElementById('btn2');
+
+        btn1.addEventListener('click', function () {
+            // html2canvas 会处理 div 转化成 canvas  ， 后面转化成图片需要自己处理
+            html2canvas(div).then(function (canvas) {
+
+                let img = convertCanvasToImage(canvas); //将 canvas 转化成 图片
+                document.body.appendChild(img);
+            });
+
+        }, false);
+
+        btn2.addEventListener('click', function () {
+            // html2canvas 会处理 div 转化成 canvas  ， 后面转化成图片需要自己处理
+            html2canvas(div).then(function (canvas) {
+                canvasTodownload(canvas); //将 canvas 转化成 图片
+            });
+
+        }, false);
+
+        //将 canvas 转化成 图片
+        function convertCanvasToImage(canvas) {
+            var image = new Image();
+            image.src = canvas.toDataURL("image/png");
+            return image;
+        }
+
+
+        function canvasTodownload(canvas) {
+            let url = canvas.toDataURL("image/png");
+            let a = document.createElement('a');
+            a.download = "转化后的图片";
+            a.href = url;
+            a.click();
+        }
+
+
+
+    </script>
+</body>
+
+</html>
