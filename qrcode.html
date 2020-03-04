@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/qrcode.min.js"></script>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <div id="qrcode"></div>
+
+    <script>
+        let input = document.getElementById('input');
+        var qrcode = new QRCode("qrcode", {
+            text: "http://jindo.dev.naver.com/collie",      //设置内容
+            width: 128,                                     //图像宽度
+            height: 128,                                    //图像高度
+            colorDark: "#000000",                           //前景色
+            colorLight: "#ffffff",                          //背景色
+            correctLevel: QRCode.CorrectLevel.H             //容错级别分别为 L、M、Q、H
+        });
+
+        input.addEventListener('change', function () {
+            qrcode.clear();//清除上一个qrcode
+            qrcode.makeCode(input.value);  //设置内容
+        }, false);
+
+        //如果是文字就显示文字，如果是 http 网址扫码器就会转跳到响应的网址
+    </script>
+</body>
+
+</html>
